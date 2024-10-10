@@ -1,0 +1,48 @@
+Task #1
+--------
+
+1. Create a folder named log_backup.
+mkdir log_backup
+
+2. Copy all files with the .log extension from /var/log to this folder. Note: The location of log files depends on your operating system, but on Linux and macOS, it’s usually /var/log.
+sudo cp /var/log/*.log /home/kali/log_backup/
+
+3. Search the copied log files for the word "ERROR" and save the results in a file called found_errors.txt.
+sudo grep "ERROR" /home/kali/log_backup/*.log > /home/kali/log_backup/found_errors.txt
+
+4. Search the copied log files for the word "WARNING" and save the results in a file called found_warnings.txt.
+sudo grep "WARNING" /home/kali/log_backup/*.log > /home/kali/log_backup/found_warnings.txt
+
+5. Replace all dates and times in found_errors.txt and found_warnings.txt with ****. For example: 2024-09-04T05:41:59.132 -> ****T****.***
+sed -E 's/[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\.[0-9]{3}/****T****.***/g' /home/kali/log_backup/found_errors.txt > /home/kali/log_backup/found_errors_replaced.txt
+sed -E 's/[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\.[0-9]{3}/****T****.***/g' /home/kali/log_backup/found_warnings.txt > /home/kali/log_backup/found_warnings_replaced.txt
+
+6.  Create an archive (a compressed file) containing both found_errors.txt and found_warnings.txt.
+cd /home/kali/log_backup
+tar -czvf log_backup_archive.tar.gz found_errors.txt found_warnings.txt
+
+7.  Go to your Git repository (all further steps require git commands).
+The case when there is a repository. For example, in /home/kali/repository:
+git clone https://github.com/SofiiaLapina/task1_repository.git
+cd task1_repository
+8. Fetch the latest version of the main branch (called main by default).
+git checkout -b main   
+echo "# Initial commit" > README.md
+git add README.md 
+git commit -m "Initial commit"
+git push origin main 
+
+9. Create a new git branch.
+git checkout -b new_branch  
+
+10. Commit the archive (from step 6) to this new branch and push changes to the remote branch.
+cp /home/kali/log_backup/log_backup_archive.tar.gz /home/kali/log_backup/task1_repository/
+git add log_backup_archive.tar.gz
+git commit -m "Added log_backup archive"
+git push origin new_branch 
+
+11. Delete the branch locally and on the remote repository.
+git checkout main  
+git branch -D new_branch
+git push origin --delete new_branch
+
