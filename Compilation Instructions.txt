@@ -1,0 +1,13 @@
+Compilation Instructions
+
+To compile the program, follow these steps:
+
+1. Ensure you have a C compiler installed (like `gcc` or `clang`).
+2. Open your terminal or command prompt.
+3. Navigate to the directory where the source code is located.
+4. Use the following command to compile the program:
+
+gcc -o my_program my_program.c
+./my_program
+
+
