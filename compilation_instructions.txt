@@ -1,0 +1,27 @@
+
+Compilation Instructions
+
+1. Compile object files:
+   - Compile the main program `main.c` into an object file:
+     gcc -c main.c -o main.o
+   - Compile the test program `test.c` into an object file:
+     gcc -c test.c -o test.o
+   - Compile the `bisection` function implementation from `bisection.c` into an object file:
+     gcc -c bisection.c -o bisection.o
+
+2. Linking and creating executable files:
+   - Link `main.o` and `bisection.o` to create the main program:
+     gcc -o main_program main.o bisection.o -lm
+   - Link `test.o` and `bisection.o` to create the test program:
+     gcc -o test_program test.o bisection.o -lm
+
+   Note: The `-lm` flag is included to link the math library, which is required for functions like `sin()`, `cos()`, `fabs()`, etc.
+
+3. Running the programs:
+   - To run the main program, enter:
+     ./main_program
+   - Follow the prompts to enter the coefficients `a` and `b`, the interval boundaries, and the tolerance.
+   - To run the test program, enter:
+     ./test_program
+   - The test program will automatically run tests using `assert()` and output a message if the test passes.
+
