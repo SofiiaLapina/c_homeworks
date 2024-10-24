@@ -1,0 +1,32 @@
+
+Instructions for Compiling Task 1 and Advanced Task
+
+Task 1
+
+Structure of files:
+- c_list.h — Header file
+- c_list.c — Implementation file
+- main.c — File with the main function
+
+Compilation Steps:
+1. Make sure all files (c_list.h, c_list.c, main.c) are in the same folder.
+2. Open the terminal in this folder.
+3. Run the compilation command:
+   gcc main.c c_list.c -o task1_program
+   This will create an executable file named 'task1_program' (or 'task1_program.exe' on Windows).
+4. Run the program:
+   ./task1_program  or task1_program.exe
+
+Advanced Task
+
+Structure of files:
+- advanced_task.c — Contains all the program code.
+
+Compilation Steps:
+1. Make sure that 'advanced_task.c' is in the folder where you plan to compile.
+2. Open the terminal in this folder.
+3. Run the compilation command:
+   gcc advanced_task.c -o advanced_task
+   This will create an executable file named 'advanced_task' (or 'advanced_task.exe' on Windows).
+4. Run the program:
+   ./advanced_task or advanced_task.exe
